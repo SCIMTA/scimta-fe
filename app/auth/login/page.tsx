@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Form } from "@/app/ui/auth/login-form";
 import { SubmitButton } from "@/app/ui/auth/submit-button";
+import { register } from "app/auth";
 // import { signIn } from "app/auth";
 
 export default function Login() {
@@ -26,7 +27,7 @@ export default function Login() {
           <SubmitButton>Sign in</SubmitButton>
           <p className="text-center text-sm text-gray-600">
             {"Don't have an account? "}
-            <Link href="/register" className="font-semibold text-gray-800">
+            <Link href="/auth/register" className="font-semibold text-gray-800">
               Sign up
             </Link>
             {" for free."}

@@ -2,8 +2,10 @@ import Link from "next/link";
 import { Form } from "@/app/ui/auth/login-form";
 import { SubmitButton } from "@/app/ui/auth/submit-button";
 // import { signIn } from "app/auth";
+import { signUp } from "@/app/actions/auth";
+import { SignUpForm } from "@/app/ui/auth/register-form";
 
-export default function Login() {
+export default function SignUp() {
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-gray-50">
       <div className="z-10 w-full max-w-md overflow-hidden rounded-2xl border border-gray-100 shadow-xl">
@@ -13,14 +15,10 @@ export default function Login() {
             Use your email and password to sign up
           </p>
         </div>
-        <Form
+        <SignUpForm
           action={async (formData: FormData) => {
             "use server";
-            await signIn("credentials", {
-              redirectTo: "/protected",
-              email: formData.get("email") as string,
-              password: formData.get("password") as string,
-            });
+            await signUp(formData);
           }}
         >
           <SubmitButton>Sign up</SubmitButton>
@@ -31,7 +29,7 @@ export default function Login() {
             </Link>
             {" to prove it!"}
           </p>
-        </Form>
+        </SignUpForm>
       </div>
     </div>
   );

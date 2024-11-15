@@ -1,10 +1,17 @@
-export function Form({
+"use client";
+
+import { useFormState } from "react-dom";
+import { signUp } from "@/app/actions/auth";
+import { useActionState } from "react";
+
+export function SignUpForm({
   action,
   children,
 }: {
   action: any;
   children: React.ReactNode;
 }) {
+  // const [state, action] = useActionState(signUp, undefined);
   return (
     <form
       action={action}
@@ -27,6 +34,7 @@ export function Form({
           className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
         />
       </div>
+      {/* {state?.errors?.email && <p>{state.errors.email}</p>} */}
       <div>
         <label
           htmlFor="password"
@@ -43,6 +51,16 @@ export function Form({
           className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
         />
       </div>
+      {/* {state?.errors?.password && (
+        <div>
+          <p>Password must:</p>
+          <ul>
+            {state.errors.password.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+        </div>
+      )} */}
       {children}
     </form>
   );
